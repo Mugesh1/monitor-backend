@@ -1,17 +1,35 @@
 package message;
 
+import javax.persistence.Lob;
+
+import lombok.Data;
+
+@Data
 public class ResponseFile {
 	  private String name;
 	  private String url;
 	  private String type;
 	  private long size;
 
-	  public ResponseFile(String name, String url, String type, long size) {
+	   @Lob
+       private byte[] data;
+
+	  public ResponseFile(String name, String url, String type, long size,byte[] data) {
 	    this.name = name;
 	    this.url = url;
 	    this.type = type;
 	    this.size = size;
+		this.data =data;
 	  }
+
+	  public byte[] getData() {
+	    return data;
+	  }
+
+	  public void setData(byte[] data) {
+	    this.data = data;
+	  }
+
 
 	  public String getName() {
 	    return name;
